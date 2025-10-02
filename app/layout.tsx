@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Head from "next/head";
+import Navigation from "@/app/components/Navigation";
+import Footer from "@/app/components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,15 +22,33 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  title,
+  description = "Full Stack Developer Portfolio",
 }: Readonly<{
   children: React.ReactNode;
+  title?: string;
+  description?: string;
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <title>${title} - Alex Chen</title>
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+      </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-deep-charcoal text-warm-white font-geist-sans tracking-tight`}
       >
-        {children}
+        <Navigation />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
