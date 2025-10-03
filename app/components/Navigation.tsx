@@ -3,12 +3,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,10 +27,8 @@ const Navigation: React.FC = () => {
   ];
 
   const isActive = (href: string) => {
-    if (href === "/") {
-      return router.pathname === "/";
-    }
-    return router.pathname.startsWith(href);
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
   };
 
   return (
@@ -47,7 +45,7 @@ const Navigation: React.FC = () => {
             href="/"
             className="font-mono text-xl font-bold text-electric-blue hover:text-neon-green transition-colors"
           >
-            Alex Chen
+            Amir Lebba
           </Link>
 
           {/* Desktop Navigation */}

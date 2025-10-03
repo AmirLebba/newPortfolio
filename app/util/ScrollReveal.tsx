@@ -1,22 +1,23 @@
 // components/ScrollReveal.tsx
-import React from 'react';
-import { useInView } from 'react-intersection-observer';
+"use client";
+import React from "react";
+import { useInView } from "react-intersection-observer";
 
 interface ScrollRevealProps {
   children: React.ReactNode;
   className?: string;
   threshold?: number;
   rootMargin?: string;
-  animation?: 'fade-up' | 'fade-left' | 'fade-right' | 'scale';
+  animation?: "fade-up" | "fade-left" | "fade-right" | "scale";
   delay?: number;
 }
 
 const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
-  className = '',
+  className = "",
   threshold = 0.1,
-  rootMargin = '0px 0px -50px 0px',
-  animation = 'fade-up',
+  rootMargin = "0px 0px -50px 0px",
+  animation = "fade-up",
   delay = 0,
 }) => {
   const { ref, inView } = useInView({
@@ -26,22 +27,22 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   });
 
   const getAnimationClasses = () => {
-    const baseClasses = 'transition-all duration-600 ease-out';
-    
+    const baseClasses = "transition-all duration-600 ease-out";
+
     if (!inView) {
       switch (animation) {
-        case 'fade-left':
+        case "fade-left":
           return `${baseClasses} opacity-0 -translate-x-8`;
-        case 'fade-right':
+        case "fade-right":
           return `${baseClasses} opacity-0 translate-x-8`;
-        case 'scale':
+        case "scale":
           return `${baseClasses} opacity-0 scale-95`;
-        case 'fade-up':
+        case "fade-up":
         default:
           return `${baseClasses} opacity-0 translate-y-8`;
       }
     }
-    
+
     return `${baseClasses} opacity-100 translate-x-0 translate-y-0 scale-100`;
   };
 
