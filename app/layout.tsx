@@ -1,22 +1,33 @@
-import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import Navigation from '@/app/components/Navigation';
-import Footer from '@/app/components/Footer';
-import './globals.css';
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import Navigation from "@/app/components/Navigation";
+import Footer from "@/app/components/Footer";
+import "./globals.css";
 
-const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
-const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  title: { default: 'Amir Lebba Portfolio', template: '%s – Amir Lebba' },
-  description: 'Amir Lebba Portfolio skill showcase and projects overview, and god help him find a job in this times of AI and automation.',
-  icons: { icon: '/favicon.ico' },
+  title: { default: "Amir Lebba Portfolio", template: "%s – Amir Lebba" },
+  description:
+    "Amir Lebba Portfolio skill showcase and projects overview, and god help him find a job in this times of AI and automation.",
+  icons: { icon: "/favicon.ico" },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="antialiased min-h-screen bg-deep-charcoal text-warm-white font-geist-sans tracking-tight selection:bg-electric-blue selection:text-black scrollbar-thin scrollbar-track-medium-gray scrollbar-thumb-electric-blue scrollbar-thumb-rounded ">
+      <body
+        className="antialiased min-h-screen bg-deep-charcoal text-warm-white font-geist-sans tracking-tight selection:bg-electric-blue selection:text-black scrollbar-thin scrollbar-track-medium-gray scrollbar-thumb-electric-blue scrollbar-thumb-rounded "
+        suppressHydrationWarning
+      >
         <Navigation />
         <main>{children}</main>
         <Footer />
