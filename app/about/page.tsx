@@ -9,8 +9,8 @@ export default function AboutPage() {
   return (
     <>
       <AboutHero />
-      <SkillsSection />
-      <ExperienceTimeline />
+      
+      
       <Certifications />
       <PersonalInterests />
       <AboutCta />

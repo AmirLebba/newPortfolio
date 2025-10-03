@@ -14,7 +14,7 @@ export default function AboutHero() {
             </ScrollReveal>
             <ScrollReveal>
               <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-                I&apos;m a passionate full-stack developer with 5+ years of
+                I&apos;m a passionate full-stack developer with 2+ years of
                 experience creating digital solutions that make a difference. I
                 believe in the power of technology to solve real-world problems
                 and enhance people&apos;s lives.

@@ -8,8 +8,8 @@ export default function ProjectsPage() {
     <>
       <ProjectsHero />
       <ProjectsGrid />
-      <ProjectStats />
-      <ProjectModal />
+      
+      
     </>
   );
 }
