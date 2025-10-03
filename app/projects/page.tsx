@@ -1,7 +1,15 @@
-export default function HomePage() {
+import ProjectsHero from '@/app/components/ProjectsHero';
+import ProjectsGrid from '@/app/components/ProjectsGrid';
+import ProjectStats from '@/app/components/ProjectStats';
+import ProjectModal from '@/app/components/ProjectModal';
+
+export default function ProjectsPage() {
   return (
     <>
-      <div>projects</div>
+      <ProjectsHero />
+      <ProjectsGrid />
+      <ProjectStats />
+      <ProjectModal />
     </>
   );
 }

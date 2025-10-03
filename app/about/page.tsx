@@ -1,10 +1,19 @@
+import AboutHero from "@/app/about/components/AboutHero";
+import SkillsSection from "@/app/about/components/SkillsSection";
+import ExperienceTimeline from "@/app/about/components/ExperienceTimeline";
+import Certifications from "@/app/about/components/Certifications";
+import PersonalInterests from "@/app/about/components/PersonalInterests";
+import AboutCta from "@/app/about/components/AboutCta";
 
-
-export default function HomePage() {
+export default function AboutPage() {
   return (
     <>
-      
-      <div>About</div>
+      <AboutHero />
+      <SkillsSection />
+      <ExperienceTimeline />
+      <Certifications />
+      <PersonalInterests />
+      <AboutCta />
     </>
   );
 }
