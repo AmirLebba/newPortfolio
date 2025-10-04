@@ -1,7 +1,7 @@
 export function initFilters() {
   const searchBox = document.getElementById('project-search') as HTMLInputElement;
   const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const grid = document.getElementById('projects-grid') as HTMLDivElement;
+  
 
   const applyFilter = () => {
     const term = searchBox.value.toLowerCase();

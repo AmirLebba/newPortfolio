@@ -3,13 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import * as echarts from "echarts";
 
-type ChartDataItem = {
-  name: string;
-  value: number | number[];
-  itemStyle?: object;
-  areaStyle?: object;
-  lineStyle?: object;
-};
+
 type RadarData = {
   indicator: Array<{ name: string; max: number }>;
   values: number[];
