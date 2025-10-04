@@ -1,4 +1,5 @@
 import ScrollReveal from "@/app/util/ScrollReveal";
+import Image from "next/image";
 export default function AboutHero() {
   return (
     <section className="pt-32 pb-20 px-6">
@@ -40,9 +41,11 @@ export default function AboutHero() {
           </ScrollReveal>
           <div className="scroll-reveal">
             <ScrollReveal>
-              <img
+              <Image
                 src="/profile.jpg"
                 alt="Alex Chen"
+                width={400} 
+                height={400} 
                 className="w-full max-w-md mx-auto rounded-2xl shadow-2xl"
               />
             </ScrollReveal>

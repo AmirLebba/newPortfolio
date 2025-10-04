@@ -1,5 +1,6 @@
-'use client';
-import { openProjectModal } from '@/app/lib/projectModal';
+"use client";
+import { openProjectModal } from "@/app/lib/projectModal";
+import Image from "next/image";
 
 interface Props {
   id: string;
@@ -10,10 +11,27 @@ interface Props {
   tech: string[];
 }
 
-export default function ProjectCard({ id, title, desc, img, tags, tech }: Props) {
+export default function ProjectCard({
+  id,
+  title,
+  desc,
+  img,
+  tags,
+  tech,
+}: Props) {
   return (
-    <div className="project-card scroll-reveal" data-tags={tags.join(',')} data-project={id}>
-      <img src={img} alt={title} className="w-full h-48 object-cover" />
+    <div
+      className="project-card scroll-reveal"
+      data-tags={tags.join(",")}
+      data-project={id}
+    >
+      <Image
+        width={400}
+        height={400}
+        src={img}
+        alt={title}
+        className="w-full h-48 object-cover"
+      />
       <div className="p-6">
         <h3 className="text-xl font-bold mb-2">{title}</h3>
         <p className="text-gray-400 mb-4">{desc}</p>
@@ -25,7 +43,10 @@ export default function ProjectCard({ id, title, desc, img, tags, tech }: Props)
           ))}
         </div>
         <div className="flex space-x-4">
-          <button onClick={() => openProjectModal(id)} className="text-blue-400 hover:text-blue-300">
+          <button
+            onClick={() => openProjectModal(id)}
+            className="text-blue-400 hover:text-blue-300"
+          >
             View Details
           </button>
           <a href="#" className="text-gray-400 hover:text-white">
