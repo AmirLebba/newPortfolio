@@ -1,22 +1,30 @@
-'use client';
-import { useEffect } from 'react';
+"use client";
+import { useEffect } from "react";
 
+type Particle = {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+  opacity: number;
+};
 export function useParticleBackground() {
   useEffect(() => {
-    const canvas = document.createElement('canvas');
+    const canvas = document.createElement("canvas");
     Object.assign(canvas.style, {
-      position: 'fixed',
-      inset: '0',
-      width: '100%',
-      height: '100%',
-      pointerEvents: 'none',
-      zIndex: '-1',
-      opacity: '0.3',
+      position: "fixed",
+      inset: "0",
+      width: "100%",
+      height: "100%",
+      pointerEvents: "none",
+      zIndex: "-1",
+      opacity: "0.3",
     });
     document.body.appendChild(canvas);
 
-    const ctx = canvas.getContext('2d')!;
-    let particles: any[] = [];
+    const ctx = canvas.getContext("2d")!;
+    let particles: Particle[] = [];
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -51,9 +59,9 @@ export function useParticleBackground() {
 
     resize();
     animate();
-    window.addEventListener('resize', resize);
+    window.addEventListener("resize", resize);
     return () => {
-      window.removeEventListener('resize', resize);
+      window.removeEventListener("resize", resize);
       canvas.remove();
     };
   }, []);

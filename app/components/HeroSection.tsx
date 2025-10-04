@@ -75,13 +75,13 @@ export default function HeroSection() {
                 <div className="text-gray-500">// Welcome to my portfolio</div>
                 <div><span className="text-electric-blue">const </span><span className="text-white">developer</span><span className="text-gray-400"> = </span><span className="text-white">{"{"}</span></div>
                 <div className="ml-4 space-y-1">
-                  <div><span className="text-neon-green">name</span><span className="text-gray-400">: </span><span className="text-orange-400">'Amir Lebba'</span><span className="text-gray-400">,</span></div>
-                  <div><span className="text-neon-green">role</span><span className="text-gray-400">: </span><span className="text-orange-400">'Full Stack Developer'</span><span className="text-gray-400">,</span></div>
-                  <div><span className="text-neon-green">skills</span><span className="text-gray-400">: [</span><span className="text-orange-400">'React'</span><span className="text-gray-400">, </span><span className="text-orange-400">'Node.js'</span><span className="text-gray-400">, </span><span className="text-orange-400">'Next.js'</span><span className="text-gray-400">],</span></div>
-                  <div><span className="text-neon-green">passion</span><span className="text-gray-400">: </span><span className="text-orange-400">'Building amazing apps'</span></div>
+                  <div><span className="text-neon-green">name</span><span className="text-gray-400">: </span><span className="text-orange-400">&apos;Amir Lebba&apos;</span><span className="text-gray-400">,</span></div>
+                  <div><span className="text-neon-green">role</span><span className="text-gray-400">: </span><span className="text-orange-400">&apos;Full Stack Developer&apos;</span><span className="text-gray-400">,</span></div>
+                  <div><span className="text-neon-green">skills</span><span className="text-gray-400">: [</span><span className="text-orange-400">&apos;React&apos;</span><span className="text-gray-400">, </span><span className="text-orange-400">&apos;Node.js&apos;</span><span className="text-gray-400">, </span><span className="text-orange-400">&apos;Next.js&apos;</span><span className="text-gray-400">],</span></div>
+                  <div><span className="text-neon-green">passion</span><span className="text-gray-400">: </span><span className="text-orange-400">&apos;Building amazing apps&apos;</span></div>
                 </div>
                 <div><span className="text-white">{"}"};</span></div>
-                <div><span className="text-purple">console.log</span><span className="text-white">(</span><span className="text-orange-400">'Let's create something incredible together!'</span><span className="text-white">);</span></div>
+                <div><span className="text-purple">console.log</span><span className="text-white">(</span><span className="text-orange-400">&apos;Let&apos;s create something incredible together!&apos;</span><span className="text-white">);</span></div>
               </div>
             </div>
           </div>

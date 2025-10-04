@@ -2,17 +2,20 @@
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import ScrollReveal from "@/app/util/ScrollReveal";
+import * as echarts from "echarts";
 
 export default function ProjectStats() {
   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
 
   useEffect(() => {
-    if (inView && typeof window !== "undefined" && (window as any).echarts) {
-      const echarts = (window as any).echarts;
+    if (inView && typeof window !== "undefined") {
+      const typesEl = document.getElementById("project-types-chart");
+      const usageEl = document.getElementById("tech-usage-chart");
+      if (!typesEl || !usageEl) return;
 
-      const typesChart = echarts.init(
-        document.getElementById("project-types-chart")
-      );
+      const typesChart: echarts.ECharts = echarts.init(typesEl);
+      const usageChart: echarts.ECharts = echarts.init(usageEl);
+
       typesChart.setOption({
         backgroundColor: "transparent",
         tooltip: { trigger: "item" },
@@ -39,9 +42,6 @@ export default function ProjectStats() {
         ],
       });
 
-      const usageChart = echarts.init(
-        document.getElementById("tech-usage-chart")
-      );
       usageChart.setOption({
         backgroundColor: "transparent",
         tooltip: { trigger: "axis" },
@@ -78,15 +78,12 @@ export default function ProjectStats() {
         ],
       });
 
-      window.addEventListener("resize", () => {
+      const onResize = () => {
         typesChart.resize();
         usageChart.resize();
-      });
-      return () =>
-        window.removeEventListener("resize", () => {
-          typesChart.resize();
-          usageChart.resize();
-        });
+      };
+      window.addEventListener("resize", onResize);
+      return () => window.removeEventListener("resize", onResize);
     }
   }, [inView]);
 

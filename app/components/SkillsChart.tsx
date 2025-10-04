@@ -3,12 +3,32 @@
 import React, { useEffect, useRef } from "react";
 import * as echarts from "echarts";
 
+type ChartDataItem = {
+  name: string;
+  value: number | number[];
+  itemStyle?: object;
+  areaStyle?: object;
+  lineStyle?: object;
+};
+type RadarData = {
+  indicator: Array<{ name: string; max: number }>;
+  values: number[];
+};
+type BarData = {
+  categories: string[];
+  values: number[];
+};
 interface SkillsChartProps {
   type?: "radar" | "bar";
-  data?: any;
+  radarData?: RadarData;
+  barData?: BarData;
 }
 
-const SkillsChart: React.FC<SkillsChartProps> = ({ type = "radar", data }) => {
+const SkillsChart: React.FC<SkillsChartProps> = ({
+  type = "radar",
+  radarData,
+  barData,
+}) => {
   const chartRef = useRef<HTMLDivElement>(null);
   const chartInstance = useRef<echarts.ECharts | null>(null);
 
@@ -17,7 +37,8 @@ const SkillsChart: React.FC<SkillsChartProps> = ({ type = "radar", data }) => {
 
     chartInstance.current = echarts.init(chartRef.current);
 
-    const option = type === "radar" ? getRadarOption(data) : getBarOption(data);
+    const option =
+      type === "radar" ? getRadarOption(radarData) : getBarOption(barData);
 
     chartInstance.current.setOption(option);
 
@@ -31,10 +52,10 @@ const SkillsChart: React.FC<SkillsChartProps> = ({ type = "radar", data }) => {
       window.removeEventListener("resize", handleResize);
       chartInstance.current?.dispose();
     };
-  }, [type, data]);
+  }, [type, radarData, barData]);
 
-  const getRadarOption = (customData?: any) => {
-    const defaultData = {
+  const getRadarOption = (customData?: RadarData) => {
+    const defaultData: RadarData = {
       indicator: [
         { name: "Frontend", max: 100 },
         { name: "Backend", max: 100 },
@@ -52,24 +73,10 @@ const SkillsChart: React.FC<SkillsChartProps> = ({ type = "radar", data }) => {
       backgroundColor: "transparent",
       radar: {
         indicator: chartData.indicator,
-        axisName: {
-          color: "#f8f8f2",
-          fontSize: 14,
-          fontWeight: "bold",
-        },
-        splitLine: {
-          lineStyle: {
-            color: "#404040",
-          },
-        },
-        axisLine: {
-          lineStyle: {
-            color: "#404040",
-          },
-        },
-        splitArea: {
-          show: false,
-        },
+        axisName: { color: "#f8f8f2", fontSize: 14, fontWeight: "bold" },
+        splitLine: { lineStyle: { color: "#404040" } },
+        axisLine: { lineStyle: { color: "#404040" } },
+        splitArea: { show: false },
       },
       series: [
         {
@@ -78,13 +85,8 @@ const SkillsChart: React.FC<SkillsChartProps> = ({ type = "radar", data }) => {
             {
               value: chartData.values,
               name: "Skills",
-              areaStyle: {
-                color: "rgba(0, 212, 255, 0.3)",
-              },
-              lineStyle: {
-                color: "#00d4ff",
-                width: 3,
-              },
+              areaStyle: { color: "rgba(0, 212, 255, 0.3)" },
+              lineStyle: { color: "#00d4ff", width: 3 },
               itemStyle: {
                 color: "#39ff14",
                 borderColor: "#00d4ff",
@@ -97,8 +99,8 @@ const SkillsChart: React.FC<SkillsChartProps> = ({ type = "radar", data }) => {
     };
   };
 
-  const getBarOption = (customData?: any) => {
-    const defaultData = {
+  const getBarOption = (customData?: BarData) => {
+    const defaultData: BarData = {
       categories: [
         "JavaScript",
         "React",
@@ -117,25 +119,14 @@ const SkillsChart: React.FC<SkillsChartProps> = ({ type = "radar", data }) => {
       xAxis: {
         type: "category",
         data: chartData.categories,
-        axisLabel: {
-          color: "#f8f8f2",
-          rotate: 45,
-        },
-        axisLine: {
-          lineStyle: { color: "#404040" },
-        },
+        axisLabel: { color: "#f8f8f2", rotate: 45 },
+        axisLine: { lineStyle: { color: "#404040" } },
       },
       yAxis: {
         type: "value",
-        axisLabel: {
-          color: "#f8f8f2",
-        },
-        axisLine: {
-          lineStyle: { color: "#404040" },
-        },
-        splitLine: {
-          lineStyle: { color: "#404040" },
-        },
+        axisLabel: { color: "#f8f8f2" },
+        axisLine: { lineStyle: { color: "#404040" } },
+        splitLine: { lineStyle: { color: "#404040" } },
       },
       series: [
         {

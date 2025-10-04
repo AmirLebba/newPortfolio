@@ -2,18 +2,22 @@
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import ScrollReveal from "@/app/util/ScrollReveal";
+import * as echarts from "echarts";
 
 export default function SkillsSection() {
   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
 
   useEffect(() => {
-    if (inView && typeof window !== "undefined" && (window as any).echarts) {
-      const chart = (window as any).echarts.init(
-        document.getElementById("skills-radar")
-      );
+    if (inView && typeof window !== "undefined") {
+      const chartEl = document.getElementById("skills-radar");
+      if (!chartEl) return;
+
+      const chart: echarts.ECharts = echarts.init(chartEl);
       chart.setOption(radarOption);
-      window.addEventListener("resize", () => chart.resize());
-      return () => window.removeEventListener("resize", () => chart.resize());
+
+      const onResize = () => chart.resize();
+      window.addEventListener("resize", onResize);
+      return () => window.removeEventListener("resize", onResize);
     }
   }, [inView]);
 
